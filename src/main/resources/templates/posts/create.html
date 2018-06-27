@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: post-head">
+</head>
+
+<body>
+<div th:replace="Post-Partials :: nav-bar"></div>
+
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+
+    <label for="title">Title:</label>
+    <input name="title" id="title" type="text" th:field="*{title}" />
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+    <br />
+    <label for="body">Body:</label>
+    <input name="body" id="body" type="text" th:field="*{body}" />
+    <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
+    <br />
+    <input type="hidden" th:field="*{user}"/>
+    <input type="submit"/>
+</form>
+
+</body>
+</html>

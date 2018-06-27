@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head :: post-head"></head>
+
+<body>
+
+<div id="jumbo">
+<div th:replace="Post-Partials :: nav-bar"></div>
+<h1 class="my_blog">The Blog</h1>
+    <h2 class="my_blog2">Made with Spring Boot and Java!</h2>
+    <div class="divider"></div>
+</div>
+
+<h1 class="posts-title">Here are all your posts!</h1>
+<div class="post-body" th:each="post : ${Posts}">
+    <p class="post-title" th:text="${post.getTitle()}" ></p>
+    <p th:text="${post.getUser().getEmail()}"></p>
+    <p class="post-description" th:text="${post.getBody()}"></p>
+</div>
+
+</body>
+</html>

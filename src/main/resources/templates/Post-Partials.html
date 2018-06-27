@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+
+<div class="nav" th:fragment="nav-bar">
+    <ul class="nav-ul">
+        <li id="all"><a href="/posts">All Posts</a></li>
+        <li id="create"><a href="/posts/create">Create Post</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/sign-up">Sign Up</a></li>
+        <li sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" th:method="POST">
+                <input type="submit" value="Log Out" />
+            </form>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
